@@ -20,8 +20,11 @@ body {
   font-size: 24px;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 600;
-  background-color: #ccb16e;
+  background-color: #d4cac9;
   background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you!
+  background-color: #ccb16e;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png"); */
 }
 
 /*
@@ -30,8 +33,6 @@ body {
 
 main {
   margin: auto;
-  width: 90%;
-
-  
+  width: 90%; 
 }
 

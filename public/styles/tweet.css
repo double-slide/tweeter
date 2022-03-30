@@ -1,0 +1,53 @@
+article {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  height: auto;
+  width: 100%;
+  border: 5px solid black; 
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  background-color: white;
+}
+
+article > header {
+  height: 60px;
+  width: 95%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-self: center;
+}
+
+article > .tweet {
+  height: 100px;
+  width: 95%;
+  box-sizing: border-box;
+  border: none;
+  align-self: center;
+  border-bottom: 4px solid black;
+}
+
+article > footer {
+  height: 50px;
+  width: 95%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-self: center;
+  align-items: center;
+}
+
+.retweetButtons > .fa-solid {
+  margin-left: 5px;
+  margin-right: 5px;
+  color: grey;
+}
+
+article > header > .fa-solid {
+  margin-right: 10px;
+}
