@@ -12,3 +12,9 @@ body > header {
 .newTweet > .fa-solid {
   color: red;
 }
+
+.username {
+  display: flex;
+  flex-direction: row;
+  margin-left: 5px;
+}
