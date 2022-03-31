@@ -60,3 +60,14 @@ article > header > .userName > img {
   align-items: center;
   margin-right: 10px;
 }
+
+article:hover {
+  box-shadow: 5px 5px;
+  background-color: #f6f5ff;
+}
+
+.retweetButtons > .fa-solid:hover {
+  color: red;
+}
+
+

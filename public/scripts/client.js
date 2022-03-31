@@ -26,13 +26,8 @@ $(document).ready(function() {
   };
 
   const createTweetElement = function(tweet) {
-
-    // const todayDateUnix = Date.now();
     const tweetDateUnix = tweet.created_at;
-    // const $daysSinceTweet = Math.round((todayDateUnix - tweetDateUnix) / 86400000);
     const $daysSinceTweet = timeago.format(tweetDateUnix)
-    
-
     const $tweet = $(
       `<article>
         <header>
@@ -57,8 +52,10 @@ $(document).ready(function() {
         </footer>
       </article>`
     )
+
     return $tweet;
   };
+
 
   loadTweets();
 
