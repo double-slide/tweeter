@@ -1,3 +1,5 @@
+
+
 $(document).ready(function() {
   
   const loadTweets = function() {
@@ -13,8 +15,14 @@ $(document).ready(function() {
     const numberOfTweets= tweets.length;
     for (let i = 0; i < numberOfTweets; i++) {
       const $tweet = createTweetElement(tweets[i])
-      $('#tweets-container').append($tweet); 
+      $('#tweets-container').prepend($tweet); 
     }
+  };
+
+  const escape = function(str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
   };
 
   const createTweetElement = function(tweet) {
@@ -37,7 +45,7 @@ $(document).ready(function() {
           </div>
         </header>
         <div class="tweet">
-          <p>${tweet.content.text}</p>
+          <p>${escape(tweet.content.text)}</p>
         </div>
         <footer> 
           <p>${$daysSinceTweet}</p>
@@ -52,13 +60,40 @@ $(document).ready(function() {
     return $tweet;
   };
 
-
-
   loadTweets();
 
+  $('#tweetForm').submit(function(event) {
+    
+    event.preventDefault();
+
+    const serializedTweet = $('#tweetForm').serialize();
+    const tweet = $('#tweet-text').val();
+
+    // check if tweet is empty or null
+    if (tweet === "" || tweet === null) {
+      $('#errorNoText').slideDown(100);
+    } else if (tweet.length > 140) {
+      $('#errorTooLong').slideDown(100);
+    } else {
+      $('#errorNoText').slideUp(100);
+      $('#errorTooLong').slideUp(100);
+      // console.log('MADE TO CALL AJAX');
+    $.ajax({
+      type: 'POST',
+      url: "/tweets",
+      data: serializedTweet
+    }).then(() => {
+      loadTweets();
+    });
+    }
+  });
+
+  $('#errorNoText').hide();
+  $('#errorTooLong').hide();
 
 
-
+  $("div#errorNoText").removeClass("hidden");
+  $("div#errorTooLong").removeClass("hidden");
 
 
 });

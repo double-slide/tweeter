@@ -1,0 +1,6 @@
+.errorBar {
+  border: 5px solid red;
+  margin: 10px;
+  background-color: red;
+  color: white;
+}
