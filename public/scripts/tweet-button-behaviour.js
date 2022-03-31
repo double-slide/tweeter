@@ -8,6 +8,7 @@ $(document).ready(function() {
     });
   });
 
+
   $(".submissionButton > button").on("mouseleave", function(event) {
     $(this).css({
       // "box-shadow": "none",
@@ -15,5 +16,39 @@ $(document).ready(function() {
       "margin": "3px"
     });
   });
+
+
+
+  $('#tweetForm').submit(function(event) {
+    
+    event.preventDefault();
+
+    const serializedTweet = $('#tweetForm').serialize();
+    const tweet = $('#tweet-text').val();
+
+    // check if tweet is empty or null
+    if (tweet === "" || tweet === null) {
+      alert("Tweet must contain content!");
+    } else if (tweet.length >= 140) {
+      alert("Tweet is limited to 140 characters!");
+    } else {
+      // console.log('MADE TO CALL AJAX');
+    $.ajax({
+      type: 'POST',
+      url: "/tweets",
+      data: serializedTweet
+    })
+
+    }
+
+    
+  });
+
+
+
+
+
+
+
   
 });

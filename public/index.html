@@ -24,13 +24,15 @@
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js" integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
   </head>
 
+
   <body>
-    <!-- Top nav bar (fixed) -->
+    <!-- FIXED TOP NAV BAR -->
     <nav>
         <span class="nav-bar">
             <a class="logo">tweeter</a>
@@ -40,12 +42,10 @@
             </div>
           </span>
     </nav>
+
+    <!-- PROFILE HEADER WITH AVATAR AND NAME  -->
     <header>
-      <!-- <div class="userPic"> -->
-      <!-- <div> -->
         <img src="/images/profile-hex.png">
-      <!-- </div> -->
-      <!-- <br>  -->
       <div class="username">
         <h2>First Last</h2>
       </div>
@@ -53,103 +53,30 @@
     
     <!-- Page-specific (main) content here -->
     <main class="container">
+
+      <!-- NEW TWEET FORM -->
       <section class="new-tweet">
-        <!-- <h2>Compose Tweet</h2> -->
-        <form action="/tweets/" method="POST">
+        <form id="tweetForm" action="/tweets/" method="POST">
           <label for="tweet-text">What are you humming about?</label>
           <br>
           <textarea name="text" id="tweet-text"></textarea>
           <div class="submissionButton">
-            <button type="submit">Tweet</button>
+            <button id="newTweetButton" type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
       </section>
 
-    
-      <article>
-        <header>
-          <div class="userName">
-            <i class="fa-solid fa-face-grin-beam"></i>
-            <a>First Last</a>
-          </div>
-          <div class="userHandle">
-            <a>@thelastfirst</a>
-          </div>
-        </header>
-        <div class="tweet">
-          <p>This is the last time I will tweet first</p>
-        </div>
-        <footer> 
-          <p>4 days ago</p>
-          <div class="retweetButtons">
-            <i class="fa-solid fa-flag"></i>
-            <i class="fa-solid fa-retweet"></i>
-            <i class="fa-solid fa-heart"></i>
-          </div>
-        </footer>
-      </article>
+      <div id="tweets-container">
+        <!-- TWEETS GET LOADED HERE -->
+      </div>
 
-      <article>
-        <header>
-          <div class="userName">
-            <i class="fa-solid fa-face-grin-beam"></i>
-            <a>First Last</a>
-          </div>
-          <div class="userHandle">
-            <a>@thelastfirst</a>
-          </div>
-        </header>
-        <div class="tweet">
-          <p>This is the last time I will tweet first</p>
-        </div>
-        <footer> 
-          <p>4 days ago</p>
-          <div class="retweetButtons">
-            <i class="fa-solid fa-flag"></i>
-            <i class="fa-solid fa-retweet"></i>
-            <i class="fa-solid fa-heart"></i>
-          </div>
-        </footer>
-      </article>
-
-      <article>
-        <header>
-          <div class="userName">
-            <i class="fa-solid fa-face-grin-beam"></i>
-            <a>First Last</a>
-          </div>
-          <div class="userHandle">
-            <a>@thelastfirst</a>
-          </div>
-        </header>
-        <div class="tweet">
-          <p>This is the last time I will tweet first</p>
-        </div>
-        <footer> 
-          <p>4 days ago</p>
-          <div class="retweetButtons">
-            <i class="fa-solid fa-flag"></i>
-            <i class="fa-solid fa-retweet"></i>
-            <i class="fa-solid fa-heart"></i>
-          </div>
-        </footer>
-      </article>
-
-
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-      <!-- <br> -->
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut scelerisque auctor tortor ac convallis. Nullam sollicitudin tellus nec urna vestibulum, in cursus tellus viverra. Sed porttitor placerat enim aliquet egestas. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel lorem quis lacus volutpat egestas. Curabitur a diam mauris. Cras convallis rhoncus nisl eu euismod. Pellentesque a sapien eget erat gravida cursus sed id dolor. Aliquam tincidunt lacus sed tellus lacinia, eu tempor lorem efficitur. Integer sed ipsum nibh. Quisque sed interdum mauris. Pellentesque semper enim eget ante vehicula, quis elementum velit pellentesque. Suspendisse in urna ut quam sagittis luctus consectetur a enim. Maecenas dictum auctor lacus, in blandit orci. Pellentesque eleifend finibus risus sit amet tincidunt. Aliquam non dolor cursus, porta leo ac, auctor nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam porta tincidunt lorem, et volutpat velit efficitur nec. Aliquam sed sem neque. Praesent dignissim velit ipsum, ac feugiat tellus consectetur non. Duis ut nisi a justo sodales hendrerit. Pellentesque ac lectus varius odio sollicitudin ullamcorper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam hendrerit vehicula pretium. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer lacinia nec ligula quis hendrerit. Praesent blandit est nec magna placerat interdum. Proin in lacus et nulla suscipit tempus at id justo. Proin ac sem vitae dolor volutpat finibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse malesuada faucibus diam, vitae commodo augue euismod sit amet. Duis at neque in ipsum malesuada rutrum. Donec magna sem, vehicula at ex at, mollis finibus urna. Maecenas id ornare tellus. Proin pulvinar nulla vitae nisi congue, vel bibendum tellus pellentesque. Nulla eget arcu mauris. Aenean quis ligula quam. Sed maximus enim ac condimentum pellentesque. Nulla placerat diam eu pretium suscipit. Vivamus accumsan facilisis suscipit. In consequat tortor at elit rutrum, quis molestie sem porta. Praesent vitae mauris neque. Praesent condimentum, enim a consectetur tempor, lacus neque faucibus dolor, a vehicula tortor libero ut nulla. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis eu est dignissim sem mollis bibendum eu quis metus. Donec vulputate mauris mi, et elementum dolor consequat nec. Sed justo purus, vehicula at varius ut, eleifend sed odio. Sed sed nibh vel velit rutrum rutrum ut nec lacus. Pellentesque pretium eleifend lorem, eu vulputate nibh ultricies nec. Maecenas ut suscipit nibh, ut malesuada ligula. Nam imperdiet est erat, maximus scelerisque dui vulputate eu. Mauris id diam vehicula, facilisis ex ut, sodales diam.</p>
     </main>
   </body>
 </html>
 
+<!-- ALSO LOAD THESE SCRIPTS -->
 <script src="scripts/composer-char-counter.js"></script>
 <script src="scripts/tweet-article-behaviour.js"></script>
 <script src="scripts/tweet-button-behaviour.js"></script>
