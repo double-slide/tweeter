@@ -36,3 +36,27 @@ main {
   width: 90%; 
 }
 
+
+@media (min-width: 1024px) {
+  .flexContainer {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .flexContainer > header {
+    margin-right: 3%;
+    margin-left: 6%;
+    margin-top: 140px;
+    flex: 40%;
+    height: 19em;
+    /* float: left; */
+  }
+  main {
+    margin-top: 130px;
+    margin-left: 3%;
+    margin-right: 6%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
