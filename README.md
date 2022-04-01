@@ -35,12 +35,12 @@ Tweeter is a simple, single-page Twitter clone built with HTML, CSS, JS, jQuery 
 - Error messages slide back up (out of view) upon successful tweet submission or full page refresh
 
 ## Security
-- App is fortified against cross site scripting using secure input handling by "escaping text".
+- App is fortified against cross site scripting using secure input handling by "escaping text" [^2]
 
 ## Future Objectives
 1. Add persistant data storage for user data
 2. Add user accounts with login/logout functionality [^3]
 
-[^1]: Currently only set-up for local running. Check back in future for the fully-hosted version!
-[^2]: For more info on XSS, please [refer here] (https://en.wikipedia.org/wiki/Cross-site_scripting).
-[^3]: Check back in future for persistant database functionality and user accounts!
+[^1]: Currently only set-up for local running. Check back in future for the fully-hosted version
+[^2]: For more info on cross site scripting, please [refer here] (https://en.wikipedia.org/wiki/Cross-site_scripting)
+[^3]: Check back in future for persistant database functionality and user accounts
