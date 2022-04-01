@@ -32,7 +32,7 @@ article > .tweet {
   align-self: center;
   border-bottom: 4px solid black;
   color: black;
-  /* word-wrap: break-word; */
+  word-break: break-word;
   overflow-wrap: break-word;
 }
 

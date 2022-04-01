@@ -1,5 +1,7 @@
 
+// JQUERY EVENT HANDLERS ONCE DOCUMENT IS READY
 $(document).ready(function () {
+
 
   // HANDLER FOR TWEET FORM SUBMISSION
   $('#tweetForm').submit(function (event) {
@@ -26,29 +28,36 @@ $(document).ready(function () {
       .then(() => {
         loadTweets();
       });
-
   });
 
-  // COUNTER FOR REMAINING CHARACTER DISPLAY
-  $("#tweet-text").on("input", function (event) {
-    const counterDifference = $(this).val().length;
-    const $charCounter = $(this).closest("form").find('.counter');
-    const maxCharCount = 140 - counterDifference;
-    $charCounter.text(maxCharCount);
-    if (maxCharCount < 0) {
-      $charCounter.css({ color: 'red' });
-    }
-    if (maxCharCount >= 0) {
-      $charCounter.css({ color: 'black' });
-    }
-  });
+
+  // UPDATE CHARACTER DISPLAY WHEN TYPING & ON FORM SUBMIT
+  $("#tweet-text").on("input", counterUpdater);
+  $('#tweetForm').submit(counterUpdater);
+
 
   // HIDE INITIAL ERROR MESSAGES
   $('#errorNoText').hide();
   $('#errorTooLong').hide();
 
+  // LOAD TWEETS
   loadTweets();
 });
+
+
+// FUNCTION TO UPDATE COUNTER
+const counterUpdater = function () {
+  const counterDifference = $(this).val().length;
+  const $charCounter = $(this).closest("form").find('.counter');
+  const maxCharCount = 140 - counterDifference;
+  $charCounter.text(maxCharCount);
+  if (maxCharCount < 0) {
+    $charCounter.css({ color: 'red' });
+  }
+  if (maxCharCount >= 0) {
+    $charCounter.css({ color: 'black' });
+  }
+};
 
 
 // FUNCTION TO LOAD TWEETS USING AJAX GET REQUEST, THEN PROMISE TO RENDER TWEETS
@@ -61,6 +70,7 @@ const loadTweets = function () {
     });
 };
 
+
 // FUNCTION TO TAKE 'TWEETS' ARRAY AND RENDER INTO HTML USING 'CREATE TWEET ELEMENT' FUNCTION
 const renderTweets = function (tweets) {
   const numberOfTweets = tweets.length;
@@ -72,12 +82,14 @@ const renderTweets = function (tweets) {
   }
 };
 
+
 // FUNCTION TO STOP XSS IN TWEET DATA
 const escape = function (str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 };
+
 
 // FUNCTION TO TAKE SINGLE TWEET DATA AND RENDER INTO HTML AND THEN RETURN
 const createTweetElement = function (tweet) {
