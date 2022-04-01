@@ -15,7 +15,9 @@ Tweeter is a simple, single-page Twitter clone built with HTML, CSS, JS, jQuery 
 ## Dependencies
 
 - Express
-- Node 5.10.x or above
+- Node
+- Bodyparser
+- Chance
 
 ## Responsive Design
 - The app uses media queries to change the layout depend on page window size
