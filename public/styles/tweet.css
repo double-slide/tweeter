@@ -25,7 +25,6 @@ article > header {
 
 article > .tweet {
   height: 120px;
-  /* height: auto; */
   width: 95%;
   box-sizing: border-box;
   border: none;

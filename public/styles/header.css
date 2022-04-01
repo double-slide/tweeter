@@ -3,7 +3,6 @@ body > .flexContainer > header {
   width: 100%;
   display: flex;
   background-color: #4056A1;
-  /* background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png"); */
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;

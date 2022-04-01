@@ -1,10 +1,10 @@
 
 // JQUERY EVENT HANDLERS ONCE DOCUMENT IS READY
-$(document).ready(function () {
+$(document).ready(function() {
 
 
   // HANDLER FOR TWEET FORM SUBMISSION
-  $('#tweetForm').submit(function (event) {
+  $('#tweetForm').submit(function(event) {
 
     // STOP PAGE REFRESH
     event.preventDefault();
@@ -46,7 +46,7 @@ $(document).ready(function () {
 
 
 // FUNCTION TO UPDATE COUNTER
-const counterUpdater = function () {
+const counterUpdater = function() {
   const counterDifference = $(this).val().length;
   const $charCounter = $(this).closest("form").find('.counter');
   const maxCharCount = 140 - counterDifference;
@@ -61,18 +61,18 @@ const counterUpdater = function () {
 
 
 // FUNCTION TO LOAD TWEETS USING AJAX GET REQUEST, THEN PROMISE TO RENDER TWEETS
-const loadTweets = function () {
+const loadTweets = function() {
   $.ajax('/tweets', {
     type: 'GET'
   })
-    .then(function (tweets) {
+    .then(function(tweets) {
       renderTweets(tweets);
     });
 };
 
 
 // FUNCTION TO TAKE 'TWEETS' ARRAY AND RENDER INTO HTML USING 'CREATE TWEET ELEMENT' FUNCTION
-const renderTweets = function (tweets) {
+const renderTweets = function(tweets) {
   const numberOfTweets = tweets.length;
   const container = $('#tweets-container');
   container.empty();
@@ -84,7 +84,7 @@ const renderTweets = function (tweets) {
 
 
 // FUNCTION TO STOP XSS IN TWEET DATA
-const escape = function (str) {
+const escape = function(str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
@@ -92,7 +92,7 @@ const escape = function (str) {
 
 
 // FUNCTION TO TAKE SINGLE TWEET DATA AND RENDER INTO HTML AND THEN RETURN
-const createTweetElement = function (tweet) {
+const createTweetElement = function(tweet) {
   const tweetDateUnix = tweet.created_at;
   const $daysSinceTweet = timeago.format(tweetDateUnix);
   const $tweet = $(

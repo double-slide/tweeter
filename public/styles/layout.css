@@ -36,9 +36,6 @@ body {
 main {
   margin: auto;
   width: 90%;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center; */
 }
 
 
@@ -46,7 +43,6 @@ main {
   .flexContainer {
     display: flex;
     flex-direction: row;
-    /* width: 75% */
   }
  
   .flexContainer>header {
