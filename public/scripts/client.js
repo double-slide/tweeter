@@ -60,15 +60,16 @@ $(document).ready(function() {
   };
 
 
-  
+  // HANDLER FOR TWEET FORM SUBMISSION
   $('#tweetForm').submit(function(event) {
     
+    // STOP PAGE REFRESH
     event.preventDefault();
     
     const serializedTweet = $('#tweetForm').serialize();
     const tweet = $('#tweet-text').val();
     
-    // check if tweet is empty or null
+    // ERROR CHECKING ON TWEET; IF OK AJAX POST THEN PROMISE TO LOADTWEETS
     if (tweet === "" || tweet === null) {
       $('#errorNoText').slideDown(100);
     } else if (tweet.length > 140) {
@@ -76,18 +77,17 @@ $(document).ready(function() {
     } else {
       $('#errorNoText').slideUp(100);
       $('#errorTooLong').slideUp(100);
-      // console.log('MADE TO CALL AJAX');
       $.ajax({
         type: 'POST',
         url: "/tweets",
         data: serializedTweet
-    }).then(() => {
-      loadTweets();
-      // renderTweets();
-    });
-  }
+      }).then(() => {
+        loadTweets();
+      });
+    }
   });
 
+  // COUNTER FOR REMAINING CHARACTER DISPLAY
   $("#tweet-text").on("input", function(event) {
     const counterDifference = $(this).val().length;
     const $charCounter = $(this).closest("form").find('.counter');
@@ -99,16 +99,14 @@ $(document).ready(function() {
     if (maxCharCount >= 0) {
       $charCounter.css({ color: 'black'});
     }
-    
-    
   });
   
-  
+  // HIDE INITIAL ERROR MESSAGES
   $('#errorNoText').hide();
   $('#errorTooLong').hide();
     
-  $("div#errorNoText").removeClass("hidden");
-  $("div#errorTooLong").removeClass("hidden");
+  // $("div#errorNoText").removeClass("hidden");
+  // $("div#errorTooLong").removeClass("hidden");
     
   loadTweets();
   

@@ -15,12 +15,9 @@
   font-family: 'Bungee', cursive, sans-serif;
   margin: 1.5em;
   font-size: 40px;
-  /* display: flex;
-  justify-content: flex-start; */
 }
 
 .newTweet {
-  /* align-self: flex-end; */
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 300;
   margin: 1.5em;
@@ -34,15 +31,3 @@
 .userPic {
   margin-top: 125px;
 }
-
-
-/*
-justify-content
-align-items
-flex-direction
-order
-align-self
-flex-wrap
-flex-flow
-align-content
-*/
