@@ -38,12 +38,13 @@ button {
   justify-content: space-between;
   font-family: 'Bungee', cursive, sans-serif;
 }
-/* 
-form {
-
-} */
 
 div.hidden
 {
    display: none
+}
+
+.submissionButton > button:hover {
+  border: 8px solid #00ccff;
+  margin: 0px;
 }

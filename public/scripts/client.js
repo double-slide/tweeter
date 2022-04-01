@@ -1,7 +1,7 @@
 
-
 $(document).ready(function() {
   
+  // FUNCTION TO LOAD TWEETS USING AJAX GET REQUEST, THEN PROMISE TO RENDER TWEETS
   const loadTweets = function() {
     $.ajax('/tweets', { 
       type: 'GET'
@@ -11,6 +11,7 @@ $(document).ready(function() {
     })
   };
 
+  // FUNCTION TO TAKE 'TWEETS' ARRAY AND RENDER INTO HTML USING 'CREATE TWEET ELEMENT' FUNCTION
   const renderTweets = function(tweets) {
     const numberOfTweets= tweets.length;
     for (let i = 0; i < numberOfTweets; i++) {
@@ -19,12 +20,14 @@ $(document).ready(function() {
     }
   };
 
+  // FUNCTION TO STOP XSS IN TWEET DATA
   const escape = function(str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
 
+  // FUNCTION TO TAKE SINGLE TWEET DATA AND RENDER INTO HTML AND THEN RETURN
   const createTweetElement = function(tweet) {
     const tweetDateUnix = tweet.created_at;
     const $daysSinceTweet = timeago.format(tweetDateUnix)
@@ -32,18 +35,18 @@ $(document).ready(function() {
       `<article>
         <header>
           <div class="userName">
-          <img src="${tweet.user.avatars}">
-          <a>${tweet.user.name}</a>
+          <img src="${escape(tweet.user.avatars)}">
+          <a>${escape(tweet.user.name)}</a>
           </div>
           <div class="userHandle">
-            <a>${tweet.user.handle}</a>
+            <a>${escape(tweet.user.handle)}</a>
           </div>
         </header>
         <div class="tweet">
           <p>${escape(tweet.content.text)}</p>
         </div>
         <footer> 
-          <p>${$daysSinceTweet}</p>
+          <p>${escape($daysSinceTweet)}</p>
           <div class="retweetButtons">
             <i class="fa-solid fa-flag"></i>
             <i class="fa-solid fa-retweet"></i>
@@ -57,15 +60,14 @@ $(document).ready(function() {
   };
 
 
-  loadTweets();
-
+  
   $('#tweetForm').submit(function(event) {
     
     event.preventDefault();
-
+    
     const serializedTweet = $('#tweetForm').serialize();
     const tweet = $('#tweet-text').val();
-
+    
     // check if tweet is empty or null
     if (tweet === "" || tweet === null) {
       $('#errorNoText').slideDown(100);
@@ -75,22 +77,40 @@ $(document).ready(function() {
       $('#errorNoText').slideUp(100);
       $('#errorTooLong').slideUp(100);
       // console.log('MADE TO CALL AJAX');
-    $.ajax({
-      type: 'POST',
-      url: "/tweets",
-      data: serializedTweet
+      $.ajax({
+        type: 'POST',
+        url: "/tweets",
+        data: serializedTweet
     }).then(() => {
       loadTweets();
+      // renderTweets();
     });
-    }
+  }
   });
 
+  $("#tweet-text").on("input", function(event) {
+    const counterDifference = $(this).val().length;
+    const $charCounter = $(this).closest("form").find('.counter');
+    const maxCharCount = 140 - counterDifference;
+    $charCounter.text(maxCharCount);
+    if (maxCharCount < 0) {
+      $charCounter.css({ color: 'red'});
+    }
+    if (maxCharCount >= 0) {
+      $charCounter.css({ color: 'black'});
+    }
+    
+    
+  });
+  
+  
   $('#errorNoText').hide();
   $('#errorTooLong').hide();
-
-
+    
   $("div#errorNoText").removeClass("hidden");
   $("div#errorTooLong").removeClass("hidden");
-
+    
+  loadTweets();
+  
 
 });
